@@ -31,6 +31,9 @@ jobs:
                 echo "CONFIG_PACKAGE_kmod-nf-nathelper=y\n" >> .config
                 echo "CONFIG_PACKAGE_kmod-nf-nathelper-extra=y\n" >> .config
                 echo "CONFIG_PACKAGE_kmod-nft-queue=y\n" >> .config
+                echo "CONFIG_PACKAGE_kmod-nft-compat=y\n" >> .config
+                echo "CONFIG_PACKAGE_kmod-ipt-core=y\n" >> .config
+                echo "CONFIG_PACKAGE_kmod-ip6tables=y\n" >> .config
                 echo "CONFIG_PACKAGE_luci=y\n" >> .config
                 echo "CONFIG_PACKAGE_luci-proto-wireguard=y\n" >> .config
                 echo "CONFIG_PACKAGE_xl2tpd=y\n" >> .config
