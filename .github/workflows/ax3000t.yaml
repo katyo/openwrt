@@ -1,6 +1,39 @@
 name: Build Xiaomi AX3000T
 on: [push]
 
+env:
+  PACKAGES: |
+    wpad-basic-mbedtls=m
+    libwolfsslcpu-crypto=y
+    wpad-wolfssl=y
+    dnsmasq=m
+    dnsmasq-full=y
+    kmod-nf-nathelper=y
+    kmod-nf-nathelper-extra=y
+    kmod-nft-queue=y
+    kmod-nft-compat=y
+    kmod-ipt-core=y
+    kmod-ip6tables=y
+    luci=y
+    luci-proto-wireguard=y
+    xl2tpd=y
+    mdio-tools=y
+    luci-theme-material=y
+    luci-app-upnp=y
+    luci-app-nft-qos=y
+    luci-app-wol=y
+    luci-app-ddns=y
+    luci-app-adblock-fast=y
+    gawk=y
+    grep=y
+    sed=y
+    nano=y
+    coreutils-sort=y
+    zapret=y
+    luci-app-zapret=y
+  LANGUAGES: |
+    ru=y
+
 jobs:
     build:
         name: Prepare and build Xiaomi AX3000T
@@ -12,33 +45,21 @@ jobs:
 
             - name: Update and install feeds
               run: |
+                echo "src-git zapret https://github.com/remittor/zapret-openwrt" >> feeds.conf.default
                 ./scripts/feeds update -a
                 ./scripts/feeds install -a
 
             - name: Generate config for Xiaomi AX3000T
               run: |
-                echo "CONFIG_TARGET_mediatek=y\n" > .config
-                echo "CONFIG_TARGET_mediatek_filogic=y\n" >> .config
-                echo "CONFIG_TARGET_MULTI_PROFILE=y\n" >> .config
-                echo "CONFIG_TARGET_PER_DEVICE_ROOTFS=y\n" >> .config
-                echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t=y\n" >> .config
-                echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t-ubootmod=y\n" >> .config
-                echo "CONFIG_PACKAGE_wpad-basic-mbedtls=m\n" >> .config
-                echo "CONFIG_PACKAGE_libwolfsslcpu-crypto=y\n" >> .config
-                echo "CONFIG_PACKAGE_wpad-wolfssl=y\n" >> .config
-                echo "CONFIG_PACKAGE_dnsmasq=m\n" >> .config
-                echo "CONFIG_PACKAGE_dnsmasq-full=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-nf-nathelper=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-nf-nathelper-extra=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-nft-queue=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-nft-compat=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-ipt-core=y\n" >> .config
-                echo "CONFIG_PACKAGE_kmod-ip6tables=y\n" >> .config
-                echo "CONFIG_PACKAGE_luci=y\n" >> .config
-                echo "CONFIG_PACKAGE_luci-proto-wireguard=y\n" >> .config
-                echo "CONFIG_PACKAGE_xl2tpd=y\n" >> .config
-                echo "CONFIG_PACKAGE_mdio-tools=y\n" >> .config
-
+                echo "CONFIG_TARGET_mediatek=y" > .config
+                echo "CONFIG_TARGET_mediatek_filogic=y" >> .config
+                echo "CONFIG_TARGET_MULTI_PROFILE=y" >> .config
+                echo "CONFIG_TARGET_PER_DEVICE_ROOTFS=y" >> .config
+                echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t=y" >> .config
+                echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t-ubootmod=y" >> .config
+                echo "${PACKAGES}" | grep -v '^$' | sed 's/^.*$/CONFIG_PACKAGE_\0/g' >> .config
+                echo "${LANGUAGES}" | grep -v '^$' | sed 's/^.*$/CONFIG_LUCI_LANG_\0/g' >> .config
+                cat .config
                 make defconfig
 
             - name: Download package sources
