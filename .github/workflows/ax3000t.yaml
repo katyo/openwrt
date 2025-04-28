@@ -84,7 +84,7 @@ jobs:
               run: tar -cvf filogicx-images.tar bin/targets/mediatek/filogic/
 
             - name: Upload artifacts
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                 name: filogic-images
                 path: filogicx-images.tar
@@ -96,7 +96,7 @@ jobs:
 
           steps:
             - name: Download the image artifacts
-              uses: actions/download-artifact@v3
+              uses: actions/download-artifact@v4
               with:
                 name: filogic-images
 
