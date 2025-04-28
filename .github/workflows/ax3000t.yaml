@@ -58,7 +58,7 @@ jobs:
                 echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t=y" >> .config
                 echo "CONFIG_TARGET_DEVICE_mediatek_filogic_DEVICE_xiaomi_mi-router-ax3000t-ubootmod=y" >> .config
                 echo "${PACKAGES}" | grep -v '^$' | sed 's/^.*$/CONFIG_PACKAGE_\0/g' >> .config
-                echo "${LANGUAGES}" | grep -v '^$' | sed 's/^.*$/CONFIG_LUCI_LANG_\0/g' >> .config
+                #echo "${LANGUAGES}" | grep -v '^$' | sed 's/^.*$/CONFIG_LUCI_LANG_\0/g' >> .config
                 cat .config
                 make defconfig
 
