@@ -3,6 +3,7 @@ TARGET ?= ax3000t
 define FEEDS
 src-git;zapret;https://github.com/remittor/zapret-openwrt
 src-git;easytier;https://github.com/katyo/luci-app-easytier
+src-git;xray;https://github.com/yichya/luci-app-xray
 endef
 
 define TARGETS
@@ -49,6 +50,8 @@ luci-app-unbound=y
 luci-app-adblock-fast=y
 easytier=y
 luci-app-easytier=y
+luci-app-xray=y
+luci-app-xray-status=y
 gawk=y
 grep=y
 sed=y
