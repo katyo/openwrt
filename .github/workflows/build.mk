@@ -39,13 +39,23 @@ endef
 define MODULES
 nf-nathelper=y
 nf-nathelper-extra=y
+nfnetlink=y
+nfnetlink-queue=y
 nft-queue=y
 nft-compat=y
+nft-conntrack=y
+nft-nat=y
+nft-socket=y
+nft-tproxy=y
 ipt-core=y
+ipt-nfqueue=y
+ipt-conntrack-extra=y
 ip6tables=y
 endef
 
 define PACKAGES
+iptables-mod-nfqueue=y
+iptables-mod-conntrack-extra=y
 wpad-basic-mbedtls=m
 libwolfsslcpu-crypto=y
 wpad-wolfssl=y
@@ -67,6 +77,7 @@ easytier=y
 luci-app-easytier=y
 luci-app-xray=y
 luci-app-xray-status=y
+jq=y
 gawk=y
 grep=y
 sed=y
@@ -74,6 +85,8 @@ nano=y
 coreutils-sort=y
 zapret=y
 luci-app-zapret=y
+curl=y
+ca-certificates=y
 endef
 
 define LANGUAGES
