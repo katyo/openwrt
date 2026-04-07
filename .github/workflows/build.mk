@@ -37,6 +37,7 @@ ramips_mt7621:xiaomi_redmi-router-ac2100=y
 endef
 
 define MODULES
+zram=y
 nf-nathelper=y
 nf-nathelper-extra=y
 nfnetlink=y
@@ -52,6 +53,7 @@ ip6tables=y
 endef
 
 define PACKAGES
+zram-swap=y
 iptables-mod-nfqueue=y
 iptables-mod-conntrack-extra=y
 wpad-basic-mbedtls=m
