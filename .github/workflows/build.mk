@@ -8,7 +8,7 @@ endif
 
 define FEEDS
 src-git;zapret;https://github.com/remittor/zapret-openwrt
-src-git;easytier;https://github.com/katyo/luci-app-easytier
+src-git;easytier;https://github.com/EasyTier/luci-app-easytier
 src-git;xray;https://github.com/yichya/luci-app-xray
 endef
 
