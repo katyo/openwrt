@@ -76,15 +76,11 @@ luci-app-unbound=y
 luci-app-adblock-fast=y
 easytier=y
 luci-app-easytier=y
-luci-app-xray=y
-luci-app-xray-status=y
 gawk=y
 grep=y
 sed=y
 nano=y
 coreutils-sort=y
-zapret=y
-luci-app-zapret=y
 curl=y
 ca-certificates=y
 endef
