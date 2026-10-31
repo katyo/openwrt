@@ -10,6 +10,7 @@ define FEEDS
 src-git;zapret;https://github.com/remittor/zapret-openwrt
 src-git;easytier;https://github.com/EasyTier/luci-app-easytier
 src-git;xray;https://github.com/yichya/luci-app-xray
+src-git;amneziawg;https://github.com/Slava-Shchipunov/awg-openwrt
 endef
 
 define TARGETS
@@ -52,6 +53,7 @@ ipt-core=y
 ipt-nfqueue=y
 ipt-conntrack-extra=y
 ip6tables=y
+amneziawg=y
 endef
 
 define PACKAGES
@@ -75,6 +77,7 @@ luci-app-ddns=y
 luci-app-https-dns-proxy=y
 luci-app-unbound=y
 luci-app-adblock-fast=y
+luci-proto-amneziawg=y
 easytier=y
 luci-app-easytier=y
 jq=y
