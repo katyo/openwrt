@@ -11,6 +11,7 @@ src-git;zapret;https://github.com/remittor/zapret-openwrt
 src-git;easytier;https://github.com/EasyTier/luci-app-easytier
 src-git;xray;https://github.com/yichya/luci-app-xray
 src-git;amneziawg;https://github.com/Slava-Shchipunov/awg-openwrt
+src-git;dnsproxy;https://github.com/muink/luci-app-dnsproxy
 endef
 
 define TARGETS
@@ -76,8 +77,8 @@ luci-app-wol=y
 luci-app-ddns=y
 luci-app-https-dns-proxy=y
 luci-app-unbound=y
-dnscrypt-proxy2=y
-luci-app-dnscrypt-proxy=y
+dnsproxy=y
+luci-app-dnsproxy=y
 luci-app-adblock-fast=y
 luci-proto-amneziawg=y
 easytier=y
